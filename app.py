@@ -28,6 +28,7 @@ def post_phonenumber():
     row = cursor.fetchone()
     conn.commit()
     if row is None:
+        cursor.close()
         return json.dumps({"msg": "Please enter your name."})
     else:
         stamps = row[2] + 1
