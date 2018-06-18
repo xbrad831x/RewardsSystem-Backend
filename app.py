@@ -31,16 +31,14 @@ def post_phonenumber():
     if row is None:
         return json.dumps({"msg": "Please enter your name."})
     else:
-        print(row[2])
+        cursor=conn.cursor()
         stamps = int(row[2]) + 1
         name = row[0]
         if stamps == 11:
-            cursor=conn.cursor()
             cursor.execute("UPDATE users SET stamps=\'0\' WHERE number=\'" + val + "\'")
             cursor.close()
             return json.dumps({"msg": "Welcome back! Please show this message to claim your free meal!"})
         else:
-            cursor=conn.cursor()
             cursor.execute("UPDATE users SET stamps=\'" + str(stamps) + "\' WHERE number=\'" + val + "\'")
             cursor.close()
             return json.dumps({"name": name, "stamps": stamps})
