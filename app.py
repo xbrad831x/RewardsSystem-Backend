@@ -32,7 +32,7 @@ def post_phonenumber():
         return json.dumps({"msg": "Please enter your name."})
     else:
         print(row[2])
-        stamps = row[2] + 1
+        stamps = int(row[2]) + 1
         name = row[0]
         if stamps == 11:
             cursor=conn.cursor()
