@@ -26,7 +26,6 @@ def post_phonenumber():
     val = obj.hexdigest()
     cursor.execute("SELECT * FROM users WHERE number=\'" + val + "\'")
     row = cursor.fetchone()
-    conn.commit()
     if row is None:
         cursor.close()
         return json.dumps({"msg": "Please enter your name."})
@@ -36,10 +35,12 @@ def post_phonenumber():
         name = row[0]
         if stamps == 11:
             cursor.execute("UPDATE users SET stamps=\'0\' WHERE number=\'" + val + "\'")
+            conn.commit()
             cursor.close()
             return json.dumps({"msg": "Welcome back! Please show this message to claim your free meal!"})
         else:
             cursor.execute("UPDATE users SET stamps=\'" + str(stamps) + "\' WHERE number=\'" + val + "\'")
+            conn.commit()
             cursor.close()
             return json.dumps({"name": name, "stamps": stamps})
 
