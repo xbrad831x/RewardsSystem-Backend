@@ -51,4 +51,4 @@ def signup():
     return json.dumps({"name": name, "stamps": 1})
 
 if __name__ == "__main__":
-        app.run()
+        app.run(debug=True)
