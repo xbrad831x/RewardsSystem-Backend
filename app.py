@@ -47,6 +47,7 @@ def post_phonenumber():
 
 @app.route("/signup", methods=['POST'])
 def signup():
+    cursor = conn.cursor()
     req = request.get_json()
     number = req['number']
     name = req['name']
