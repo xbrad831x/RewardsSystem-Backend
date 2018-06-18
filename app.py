@@ -27,8 +27,8 @@ def post_phonenumber():
     cursor.execute("SELECT * FROM users WHERE number=\'" + val + "\'")
     row = cursor.fetchone()
     conn.commit()
-    cursor.close()
     if row is None:
+        cursor.close()
         return json.dumps({"msg": "Please enter your name."})
     else:
         cursor=conn.cursor()
