@@ -16,10 +16,10 @@ app.config['MYSQL_DATABASE_HOST'] = 'us-cdbr-iron-east-04.cleardb.net'
 mysql.init_app(app)
 
 conn = mysql.connect()
-cursor = conn.cursor()
 
 @app.route("/number", methods=['POST'])
 def post_phonenumber():
+    cursor = conn.cursor()
     req = request.get_json()
     number = req['number'] 
     obj = hashlib.sha256(number.encode())
