@@ -15,10 +15,9 @@ app.config['MYSQL_DATABASE_DB'] = 'heroku_f27f25d37df7958'
 app.config['MYSQL_DATABASE_HOST'] = 'us-cdbr-iron-east-04.cleardb.net'
 mysql.init_app(app)
 
-conn = mysql.connect()
-
 @app.route("/number", methods=['POST'])
 def post_phonenumber():
+    conn = mysql.connect()
     cursor = conn.cursor()
     req = request.get_json()
     number = req['number'] 
@@ -45,6 +44,7 @@ def post_phonenumber():
 
 @app.route("/signup", methods=['POST'])
 def signup():
+    conn = mysql.connect()
     cursor = conn.cursor()
     req = request.get_json()
     number = req['number']
