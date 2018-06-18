@@ -54,6 +54,7 @@ def signup():
     val = obj.hexdigest()
     cursor.execute("INSERT INTO users (name, number, stamps) VALUES (\'" + name + "\', \'" + val +  "', '1')")
     conn.commit()
+    cursor.close()
     return json.dumps({"name": name, "stamps": 1})
 
 if __name__ == "__main__":
