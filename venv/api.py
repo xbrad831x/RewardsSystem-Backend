@@ -9,10 +9,10 @@ app = Flask(__name__)
 mysql = MySQL()
  
 # MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'qaz987'
-app.config['MYSQL_DATABASE_DB'] = 'REWARDSYSTEM'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'b8da8322190e16'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'c37ae115'
+app.config['MYSQL_DATABASE_DB'] = 'heroku_f27f25d37df7958'
+app.config['MYSQL_DATABASE_HOST'] = 'mysql://b8da8322190e16:c37ae115@us-cdbr-iron-east-04.cleardb.net/heroku_f27f25d37df7958?reconnect=true'
 mysql.init_app(app)
 
 conn = mysql.connect()
