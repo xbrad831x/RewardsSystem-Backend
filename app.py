@@ -31,8 +31,8 @@ def post_phonenumber():
         cursor.close()
         return json.dumps({"msg": "Please enter your name."})
     else:
-         timeDifference = now - row[3]
-         isPastLimit = timeDifference < limit
+        timeDifference = now - row[3]
+        isPastLimit = timeDifference < limit
         if isPastLimit:
             cursor.close()
             return json.dumps({"msg": "I'm sorry, but you can only check in once a day."})
