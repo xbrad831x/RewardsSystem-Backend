@@ -51,7 +51,7 @@ def signup():
     name = req['name']
     obj = hashlib.sha256(number.encode())
     val = obj.hexdigest()
-    cursor.execute("INSERT INTO users (name, number, stamps) VALUES (\'" + name + "\', \'" + val +  "', '1')")
+    cursor.execute("INSERT INTO users (name, number, stamps, date) VALUES (\'" + name + "\', \'" + val +  "', '1', NOW())")
     conn.commit()
     cursor.close()
     return json.dumps({"name": name, "stamps": 1})
