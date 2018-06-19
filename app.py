@@ -39,12 +39,12 @@ def post_phonenumber():
         stamps = int(row[2]) + 1
         name = row[0]
         if stamps == 11:
-            cursor.execute("UPDATE users SET stamps=\'0\' WHERE number=\'" + val + "\'")
+            cursor.execute("UPDATE users SET stamps=\'0\', date=NOW() WHERE number=\'" + val + "\'")
             conn.commit()
             cursor.close()
             return json.dumps({"msg": "Welcome back! Please show this message to claim your free meal!"})
         else:
-            cursor.execute("UPDATE users SET stamps=\'" + str(stamps) + "\' WHERE number=\'" + val + "\'")
+            cursor.execute("UPDATE users SET stamps=\'" + str(stamps) + "\', date=NOW() WHERE number=\'" + val + "\'")
             conn.commit()
             cursor.close()
             return json.dumps({"name": name, "stamps": stamps})
