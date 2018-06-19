@@ -26,16 +26,16 @@ def post_phonenumber():
     cursor.execute("SELECT * FROM users WHERE number=\'" + val + "\'")
     row = cursor.fetchone()
     now = datetime.datetime.now()
-    limit = datetime.timedelta(hours=1)
-    timeDifference = now - row[3]
-    isPastLimit = timeDifference < limit   
+    limit = datetime.timedelta(hours=1)   
     if row is None:
         cursor.close()
         return json.dumps({"msg": "Please enter your name."})
-    elif isPastLimit:
-        cursor.close()
-        return json.dumps({"msg": "I'm sorry, but you can only check in once a day."})
     else:
+         timeDifference = now - row[3]
+         isPastLimit = timeDifference < limit
+        if isPastLimit:
+            cursor.close()
+            return json.dumps({"msg": "I'm sorry, but you can only check in once a day."})
         stamps = int(row[2]) + 1
         name = row[0]
         if stamps == 11:
