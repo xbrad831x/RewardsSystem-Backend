@@ -9,10 +9,6 @@ app = Flask(__name__)
 mysql = MySQL()
  
 # MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'b8da8322190e16'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'c37ae115'
-app.config['MYSQL_DATABASE_DB'] = 'heroku_f27f25d37df7958'
-app.config['MYSQL_DATABASE_HOST'] = 'us-cdbr-iron-east-04.cleardb.net'
 mysql.init_app(app)
 
 @app.route("/number", methods=['POST'])
